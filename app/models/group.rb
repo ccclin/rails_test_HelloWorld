@@ -1,3 +1,3 @@
 class Group < ActiveRecord::Base
-    valiadta :title, :presence => true
+    validates :title, :presence => true
 end
