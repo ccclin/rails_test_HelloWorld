@@ -28,5 +28,24 @@ class GroupsController < ApplicationController
 
     def group_params
         params.require(:group).permit(:title, :description) 
+    end  
+
+    def edit
+        @group = Group.find(params[:id])
+    end
+
+    def update
+        @group = Group.find(params[:id])
+        if @group.update(group_params)
+            redirect_to group_path(@group)
+        else
+            render :edit
+        end
     end   
-end
+
+   def destroy
+        @group = Group.find(params[:id])
+        @group.destroy
+        redirect_to group_path
+   end     
+end    
